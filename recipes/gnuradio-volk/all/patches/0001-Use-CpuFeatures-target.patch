@@ -1,0 +1,25 @@
+From 823e88aec459011ebd519f50ec2caa2ccc9bcb3b Mon Sep 17 00:00:00 2001
+From: jsallay <31416796+jsallay@users.noreply.github.com>
+Date: Tue, 27 Sep 2022 16:13:28 -0400
+Subject: [PATCH] Use CpuFeatures target
+
+---
+ lib/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
+index 75055ee..5d0b9ee 100644
+--- a/lib/CMakeLists.txt
++++ b/lib/CMakeLists.txt
+@@ -577,7 +577,7 @@ if(ENABLE_STATIC_LIBS)
+   add_library(volk_static STATIC $<TARGET_OBJECTS:volk_obj>)
+   target_link_libraries(volk_static PUBLIC ${volk_libraries})
+   if(VOLK_CPU_FEATURES)
+-    target_link_libraries(volk_static PRIVATE cpu_features)
++    target_link_libraries(volk_static PRIVATE CpuFeatures::cpu_features)
+   endif()
+   if(ORC_FOUND)
+     target_link_libraries(volk_static PUBLIC ${ORC_LIBRARIES_STATIC})
+-- 
+2.41.0
+
